@@ -8,7 +8,6 @@
             </div>
         </div>
     </div>
-    fi
     <div class="my-24 flex justify-center">
         <div class="group rounded-full">
             <div class="rounded-full p-32 bg-gradient-to-r from-green-400 to-orange-500 text-center group-hover:animate-spin">
