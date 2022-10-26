@@ -1,0 +1,15 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Google";
+  src: url("/public/font/Google.ttf");
+}
+
+@font-face {
+  font-family: "Japan";
+  src: url("/public/font/meiryo.ttc");
+}
