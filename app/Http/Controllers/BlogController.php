@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -14,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::filter(request(['search']))->paginate(15)->withQueryString();
+        $blogs = Blog::filter(request(['search', 'categories']))->paginate(15)->withQueryString();
         return view('blog.all', [
             'blogs' => $blogs
         ]);
@@ -27,7 +28,10 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create', []);
+        $categories = Category::all();
+        return view('blog.create', [
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -40,7 +44,8 @@ class BlogController extends Controller
     {
         $rules = [
             'title' => 'required|max:150',
-            'body' => 'required'
+            'body' => 'required',
+            'category_id' => 'required'
         ];
 
         $newData = $request->validate($rules);
@@ -71,8 +76,10 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
+        $categories = Category::all();
         return view('blog.edit', [
-            'blog' => $blog
+            'blog' => $blog,
+            'categories' => $categories
         ]);
     }
 
@@ -87,7 +94,8 @@ class BlogController extends Controller
     {
         $rules = [
             'title' => 'required|max:150',
-            'body' => 'required'
+            'body' => 'required',
+            'category_id' => 'required'
         ];
 
         $updateData = $request->validate($rules);

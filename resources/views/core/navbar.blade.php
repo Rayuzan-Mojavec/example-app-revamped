@@ -9,5 +9,9 @@
             <a class="nav-link text-2xl font-semibold active:text-black  {{ Request::is('blog*') ? 'text-black' : ' text-gray-500 hover:text-gray-700' }}"
                 href="/blog">Blog</a>
         </li>
+        <li class="nav-item mx-4">
+            <a class="nav-link text-2xl font-semibold active:text-black  {{ Request::is('category*') ? 'text-black' : ' text-gray-500 hover:text-gray-700' }}"
+                href="/category">Category</a>
+        </li>
     </ul>
 </nav>

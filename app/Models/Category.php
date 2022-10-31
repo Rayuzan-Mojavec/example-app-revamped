@@ -15,9 +15,10 @@ class Category extends Model
         'category_name',
     ];
     public $timestamps = false;
+    
 
     public function blogs()
     {
-        return $this->hasMany(Blog::class);
+        return $this->hasMany(Blog::class, 'category_id');
     }
 }

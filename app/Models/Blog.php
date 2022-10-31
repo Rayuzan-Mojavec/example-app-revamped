@@ -16,6 +16,7 @@ class Blog extends Model
         'body',
     ];
     public $timestamps = false;
+    protected $with = ['categories'];
 
     public function categories()
     {
@@ -27,6 +28,12 @@ class Blog extends Model
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where(function ($query) use ($search) {
                 $query->where('title', 'like', '%' . $search .  '%');
+            });
+        });
+
+        $query->when($filters['categories'] ?? false, function ($query, $categories) {
+            return $query->whereHas('categories', function ($query) use ($categories) {
+                $query->where('category_name', $categories);
             });
         });
     }
