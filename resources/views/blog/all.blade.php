@@ -21,6 +21,7 @@
                 <tr>
                     <th class="p-5 border">No</th>
                     <th class="p-5 border">Title</th>
+                    <th class="p-5 border">Category</th>
                     <th class="p-5 border">Action</th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@
                         <tr>
                             <td class="p-5 border">{{ $loop->iteration }}</td>
                             <td class="p-5 border">{{ $blog->title }}</td>
+                            <td class="p-5 border">{{ $blog->categories->category_name }}</td>
                             <td class="p-5 border flex justify-center">
                                 <a href="{{ route('blog.show', $blog->id) }}"
                                     class="bg-teal-500 text-white px-4 py-2 rounded-md">

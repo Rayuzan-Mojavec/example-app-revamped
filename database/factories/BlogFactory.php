@@ -26,7 +26,8 @@ class BlogFactory extends Factory
 
         return [
             'title' => fake()->sentence(3),
-            'body' => $ret
+            'body' => $ret,
+            'category_id' => mt_rand(1, 5)
         ];
     }
 }
