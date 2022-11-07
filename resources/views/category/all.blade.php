@@ -1,7 +1,7 @@
 @extends('core.core')
 
 @section('content')
-    <div class="my-24 flex justify-center">
+    <div class="mt-24 flex justify-center">
         <div class="grid grid-cols-3 gap-3">
             @foreach ($categories as $category)
                 <div class="grid grid-cols-1 shadow-md rounded-lg overflow-hidden">
@@ -27,5 +27,10 @@
                 </div>
             @endforeach
         </div>
+    </div>
+    <div class="mb-24 mt-8 flex justify-center">
+        <a href="{{ route('category.create') }}" class="px-4 py-2 bg-purple-400 rounded-lg shadow-md">
+            Create new category
+        </a>
     </div>
 @endsection

@@ -19,7 +19,7 @@
                 Tambah Data
             </a>
         </div>
-        <table class="table-auto w-full">
+        <table class="table-fixed w-full">
             <thead class="border">
                 <tr>
                     <th class="p-5 border">No</th>
@@ -35,7 +35,7 @@
                             <td class="p-5 border">{{ $loop->iteration }}</td>
                             <td class="p-5 border">{{ $blog->title }}</td>
                             <td class="p-5 border">{{ $blog->categories->category_name }}</td>
-                            <td class="p-5 border flex justify-center">
+                            <td class="p-5 border">
                                 <a href="{{ route('blog.show', $blog->id) }}"
                                     class="bg-teal-500 text-white px-4 py-2 rounded-md">
                                     View
@@ -57,7 +57,7 @@
                 </tbody>
             @else
                 <tbody class="border">
-                    <td colspan="3" class="p-5 border text-center text-lg">Teu aya asu</td>
+                    <td colspan="4" class="p-5 border text-center text-lg">Teu aya asu</td>
                 </tbody>
             @endif
         </table>
