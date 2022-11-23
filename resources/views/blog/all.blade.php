@@ -5,7 +5,7 @@
         <div class="my-2 flex justify-start">
             <form action="{{ route('blog.index') }}" class="inline-flex">
                 @if (request('categories'))
-                <input type="hidden" name="categories" value="{{ request('categories') }}">
+                    <input type="hidden" name="categories" value="{{ request('categories') }}">
                 @endif
                 <input type="text" id="search" name="search" value="{{ request('search') }}"
                     class="form-input rounded-l-xl border-slate-700 focus:border-slate-700 dark:border-slate-300 transition focus:ring-transparent">
@@ -15,52 +15,29 @@
             </form>
         </div>
         <div class="flex my-3">
-            <a href="{{ route('blog.create') }}" class="bg-teal-700 text-xl px-5 py-2 flex rounded-md text-white no-underline">
+            <a href="{{ route('blog.create') }}"
+                class="bg-teal-700 text-xl px-5 py-2 flex rounded-md text-white no-underline">
                 Tambah Data
             </a>
         </div>
-        <table class="table-fixed w-full">
-            <thead class="border">
-                <tr>
-                    <th class="p-5 border">No</th>
-                    <th class="p-5 border">Title</th>
-                    <th class="p-5 border">Category</th>
-                    <th class="p-5 border">Action</th>
-                </tr>
-            </thead>
-            @if ($blogs->count())
-                <tbody class="border">
-                    @foreach ($blogs as $blog)
-                        <tr>
-                            <td class="p-5 border">{{ $loop->iteration }}</td>
-                            <td class="p-5 border">{{ $blog->title }}</td>
-                            <td class="p-5 border">{{ $blog->categories->category_name }}</td>
-                            <td class="p-5 border">
-                                <a href="{{ route('blog.show', $blog->id) }}"
-                                    class="bg-teal-500 text-white px-4 py-2 rounded-md">
-                                    View
-                                </a>
-                                <a href="{{ route('blog.edit', $blog->id) }}"
-                                    class="bg-yellow-500 ml-2 text-white px-4 py-2 rounded-md">
-                                    Edit
-                                </a>
-                                <form action="{{ route('blog.destroy', $blog->id) }}" class="inline-flex" method="POST">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" class="bg-red-500 ml-2 text-white px-4 py-2 rounded-md">
-                                        Delete
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            @else
-                <tbody class="border">
-                    <td colspan="4" class="p-5 border text-center text-lg">Teu aya asu</td>
-                </tbody>
-            @endif
-        </table>
+        @if ($blogs->count())
+            <div class="grid grid-cols-3 gap-6 justify-center">
+                @foreach ($blogs as $blog)
+                    <div class="rounded overflow-hidden shadow-lg">
+                        <img src="{{ asset('Chinese.jpg') }}" alt="" class="w-full">
+                        <div class="px-6 py-6">
+                            <a href="{{ route('blog.show', $blog->id) }}"
+                                class="font-bold text-2xl mb-2">{{ $blog->title }}</a>
+                            <p class="text-gray-700 text-base">
+                                {{ $blog->categories->category_name }}
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <h1 class="text-center font-extrabold text-7xl py-6">LAWAK LO</h1>
+        @endif
         <div class="mt-10 mb-32">
             {{ $blogs->links() }}
         </div>

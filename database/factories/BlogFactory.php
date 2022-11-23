@@ -20,7 +20,7 @@ class BlogFactory extends Factory
         $i = 0;
         $ret = "";
         while ($i < $paragraphs) {
-            $ret .= "<p>" . $this->faker->paragraph(rand(4, 9)) . "</p>";
+            $ret .= "<div>" . $this->faker->paragraph(rand(4, 9)) . "</div>" . "<br>";
             $i++;
         }
 
