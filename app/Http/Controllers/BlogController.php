@@ -17,7 +17,8 @@ class BlogController extends Controller
     {
         $blogs = Blog::filter(request(['search', 'categories']))->paginate(15)->withQueryString();
         return view('blog.all', [
-            'blogs' => $blogs
+            'blogs' => $blogs,
+            'title' => "Blog"
         ]);
     }
 
@@ -30,7 +31,8 @@ class BlogController extends Controller
     {
         $categories = Category::all();
         return view('blog.create', [
-            'categories' => $categories
+            'categories' => $categories,
+            'title' => "Create"
         ]);
     }
 
@@ -64,7 +66,8 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         return view('blog.read', [
-            'blog' => $blog
+            'blog' => $blog,
+            'title' => "Read"
         ]);
     }
 
@@ -79,7 +82,8 @@ class BlogController extends Controller
         $categories = Category::all();
         return view('blog.edit', [
             'blog' => $blog,
-            'categories' => $categories
+            'categories' => $categories,
+            'title' => "Edit"
         ]);
     }
 

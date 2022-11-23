@@ -16,7 +16,9 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        'title' => "Home"
+    ]);
 });
 
 Route::resource('/blog', BlogController::class);

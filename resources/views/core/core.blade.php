@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/Trix.css') }}">
     <script type="text/javascript" src="{{ asset('js/Trix.js') }}"></script>
 
-
+    <title>{{ $title }}</title>
     <style>
         /* Tailwind Override */
         .trix-editor {

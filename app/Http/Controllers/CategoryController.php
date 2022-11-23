@@ -16,7 +16,8 @@ class CategoryController extends Controller
     {
         $categories = Category::get();
         return view('category.all', [
-            'categories' => $categories
+            'categories' => $categories,
+            'title' => "Category"
         ]);
     }
 
@@ -27,7 +28,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create', []);
+        return view('category.create', [
+            'title' => "Create"
+        ]);
     }
 
     /**
@@ -57,9 +60,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('category.list', [
-            'lists' => $category
-        ]);
+
     }
 
     /**
@@ -71,7 +72,8 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         return view('category.edit', [
-            'category' => $category
+            'category' => $category,
+            'title' => "Edit"
         ]);
     }
 
